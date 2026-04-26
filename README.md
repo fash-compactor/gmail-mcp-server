@@ -62,12 +62,10 @@ pip install -r requirements.txt
 ### 4 — Authenticate (first run)
 
 ```bash
-python server.py
+python auth.py
 ```
 
-A browser window will open asking you to sign in and grant permission. After you accept, a `token.json` file is saved locally. The server then starts and stays open — close it with `Ctrl+C` after verifying it launched cleanly.
-
-Subsequent starts skip the browser step and refresh the token automatically.
+A browser window will open asking you to sign in and grant permission. After you accept, a `token.json` file is saved locally and the script exits. Subsequent starts refresh the token automatically — you won't need to authenticate again.
 
 ### 5 — Configure Claude Desktop
 
@@ -104,6 +102,28 @@ The Doc ID is the long string in the Google Docs URL:
 `https://docs.google.com/document/d/THIS_PART_IS_THE_ID/edit`
 
 Restart Claude Desktop after editing the config. You should see a hammer icon (🔨) in the Claude interface indicating tools are loaded.
+
+---
+
+## Demo
+
+The screenshots below show a complete end-to-end session: Claude reads unread emails, proposes a reply, asks for confirmation, creates the draft, and the draft appears in Gmail.
+
+**1. Claude reads emails and proposes a reply to Izaak at Founders & Coders**
+
+![Claude reads emails and proposes reply](screenshots/01-claude-reads-emails-proposes-reply.png)
+
+**2. Claude previews the draft and asks permission before creating it**
+
+![Claude requests permission to create draft](screenshots/02-claude-requests-permission.png)
+
+**3. Draft confirmed — saved to Gmail Drafts**
+
+![Draft confirmed](screenshots/03-draft-confirmed.png)
+
+**4. The draft visible in Gmail, correctly addressed and threaded**
+
+![Draft in Gmail](screenshots/04-draft-in-gmail.png)
 
 ---
 
@@ -188,10 +208,12 @@ The server communicates with Claude Desktop over standard input/output (stdio tr
 
 ```
 gmail-mcp-server/
-├── server.py           # MCP server — all tool logic
+├── server.py              # MCP server — all tool logic
+├── auth.py                # Run once to authenticate and save token.json
 ├── requirements.txt
 ├── .gitignore
 ├── README.md
-├── credentials.json    # gitignored — download from Google Cloud
-└── token.json          # gitignored — auto-generated on first auth
+├── screenshots/           # Demo screenshots
+├── credentials.json       # gitignored — download from Google Cloud
+└── token.json             # gitignored — auto-generated on first auth
 ```
