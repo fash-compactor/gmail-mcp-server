@@ -147,8 +147,10 @@ Check my inbox. For the email about [topic], draft a reply saying I'll get back 
 
 ### With style guide (stretch goal)
 ```
-Fetch the style guide, then read my unread emails and draft replies that match the tone.
+Fetch my style guide, then read my unread emails and draft a reply using that tone.
 ```
+
+![Style guide stretch goal](screenshots/05-style-guide-stretch-goal.png)
 
 ---
 
